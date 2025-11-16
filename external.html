@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外部連結</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .link-container {
+            text-align: center;
+            padding: 100px 20px;
+            background-color: #f4f7f6;
+            border-radius: 10px;
+        }
+        .tk-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, #1abc9c, #2ecc71); /* 綠色漸層 */
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            margin-top: 30px;
+        }
+        .tk-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #2ecc71, #1abc9c);
+        }
+        .tk-btn::before {
+            content: '🔗 ';
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="site-title">淡江大學連結</div>
+        <nav class="nav-menu">
+            <a href="index.html">返回首頁</a>
+        </nav>
+    </header>
+
+    <main class="content-wrapper">
+        <div class="link-container">
+            <h1>歡迎訪問淡江大學</h1>
+            <p>點擊下方按鈕，直接進入教育科技學系官網：</p>
+            
+            <a href="https://www.tku.edu.tw/" target="_blank" class="quiz-link-btn">
+                淡江大學官方網站
+            </a>
+            
+            <a href="https://www.et.tku.edu.tw/" target="_blank" class="tk-btn">
+                進入教育科技學系
+            </a>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>

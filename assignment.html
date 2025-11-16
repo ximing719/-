@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一單元：七彩氣球遊戲</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.3/p5.js"></script>
+    <script src="sketch.js"></script> 
+    
+    <style>
+        .p5-container {
+            display: flex;
+            justify-content: center;
+            padding: 30px 0;
+        }
+        #score-display {
+            text-align: center;
+            font-size: 2em;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <main class="content-wrapper">
+        <h1>🎈 氣球遊戲 🎈</h1>
+        <p>點擊 **10 個** 氣球以通關！(每顆 10 分，有炫麗的爆破效果)</p>
+        
+        <div id="score-display">分數: 0 / 目標: 100 (0 顆)</div> 
+
+        <div class="p5-container" id="canvas-holder">
+        </div>
+
+        <a href="index.html" class="quiz-link-btn" style="margin-top: 30px;">
+            🔙 回到主頁
+        </a>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>

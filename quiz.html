@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>線上測驗系統 - Part B</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="site-title">線上測驗系統</div>
+        <nav class="nav-menu">
+            <a href="index.html">返回首頁</a>
+        </nav>
+    </header>
+
+    <main class="content-wrapper">
+        <div id="quiz-container">
+            <h1>小測驗</h1>
+            <p id="loading" style="text-align: center; padding: 20px;">載入題庫中，請稍候...</p>
+            
+            <div id="quiz-body">
+                <p id="question-number">第 0 / 0 題</p>
+                <p id="question-text">題目內容將在此顯示...</p>
+                
+                <form class="options-group">
+                    </form>
+                
+                <button id="next-btn" disabled>請選擇一個答案</button>
+            </div>
+
+            <div id="results" style="display: none;">
+                <h2>🎉 測驗結果 🎉</h2>
+                <p id="score-text">得分: 0 分</p>
+                <div id="details">
+                    </div>
+                <a href="index.html" class="quiz-link-btn" style="margin-top: 20px; background-color: #2ecc71;">返回首頁</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

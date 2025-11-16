@@ -1,0 +1,12 @@
+question,optionA,optionB,optionC,optionD,correctAnswer
+"在 p5.js 中，哪個函數只會在程式啟動時執行一次？","setup()","draw()","preload()","mousePressed()","A"
+"哪個函數會在 p5.js 中不斷重複執行，用於繪製畫面與動畫？","setup()","draw()","mouseClicked()","keyTyped()","B"
+"用於在 p5.js 中設定畫布大小的函數是？","setSize()","canvas()","createCanvas()","window()","C"
+"HTML 中，用於定義網頁超連結的標籤是？","<p>","<h1>","<a>","<div>","C"
+"CSS 中，用來控制元素背景顏色的屬性是？","color","font-size","background-color","text-align","C"
+"JavaScript 中，宣告一個常數變數應使用哪個關鍵字？","var","let","const","function","C"
+"要在網頁中動態獲取外部資料（如 CSV），JavaScript 常用哪個 API？","DOM API","localStorage","fetch API","setTimeout","C"
+"在響應式網頁設計中，漢堡選單通常在哪種裝置上出現？","桌面電腦","大螢幕電視","行動裝置或窄版瀏覽器","伺服器","C"
+"p5.js 畫布的預設座標原點 (0, 0) 在哪裡？","畫布中心","左上角","右下角","左下角","B"
+"要讓選單點擊後平滑滑出，主要利用 CSS 的哪個特性？","animation","transition","flexbox","grid","B"
+"您的'七彩氣球爆炸'作業屬於哪種網頁互動？","靜態資訊展示","伺服器後端處理","客戶端JavaScript遊戲互動","資料庫查詢","C"

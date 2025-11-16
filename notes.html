@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課堂筆記 - 氣球遊戲程式碼解析</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* 筆記專用樣式覆蓋 (與 style.css 的 .note-page 保持一致) */
+        .note-page {
+            max-width: 900px; /* 限制寬度，更像閱讀頁面 */
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* 柔和的陰影 */
+            line-height: 1.8; /* 增加行距，提升可讀性 */
+            font-family: 'Merriweather', serif; /* 設置文章主體字體，已在 style.css 中引入 */
+        }
+        
+        /* 修正標題字體，使用 Noto Sans TC (與整體設計更協調) */
+        .note-page h1, .note-page h2 {
+            font-family: 'Noto Sans TC', sans-serif; /* 統一使用主體標題字體 */
+            border-bottom: 2px solid #ecf0f1; /* 標題下畫線 */
+            padding-bottom: 10px;
+            margin-top: 30px;
+            color: #2c3e50;
+        }
+
+        /* 程式碼區塊美化 (與 style.css 的 .code-block 保持一致) */
+        .code-block {
+            background-color: #282c34; /* HackMD/VS Code Dark Theme */
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Roboto Mono', monospace; /* 程式碼專用字體 */
+            line-height: 1.5;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            /* 移除了 position: relative;，如果沒有特殊定位需求則不需要 */
+        }
+        /* 程式碼高亮模擬 (確保與 style.css 定義一致) */
+        .code-block strong {
+            color: #61afef; /* 模擬變數/函數顏色 */
+        }
+        .code-block .comment {
+            color: #5c6370; /* 註解顏色 */
+        }
+        .code-block .keyword {
+            color: #c678dd; /* 關鍵字顏色 */
+        }
+        .note-page ul {
+            padding-left: 20px;
+        }
+        .note-page li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="site-title">課堂筆記 (HackMD 模擬)</div>
+        <nav class="nav-menu">
+            <a href="index.html">返回首頁</a>
+            <a href="assignment.html">七彩氣球作業</a>
+            <a href="external.html">淡江連結</a> 
+        </nav>
+    </header>
+
+    <main class="content-wrapper">
+        <div class="note-page">
+            <h1>p5.js 氣球遊戲程式碼筆記：粒子爆破系統</h1>
+            <p><strong>學號: 411737017</strong> | <strong>姓名: 辛錫銘</strong> | <strong>專案狀態: 完成</strong></p>
+            <hr>
+
+            <h2>一、系統架構與互動升級</h2>
+            <p>主要包括氣球的**動態飄動**、**點擊計分**，以及最重要的 **粒子爆破效果**。</p>
+
+            <h2>二、部分程式碼展示</h2>
+            <p>以下是實現爆破效果的程式代碼。</p>
+
+            <div class="code-block">
+<span class="comment">// --- 💥 核心爆破邏輯 (在 mouseClicked 函數中調用) 💥 ---</span>
+for (let j = 0; j < 20; j++) {
+    <span class="keyword">particles</span>.<span class="keyword">push</span>(<span class="keyword">new</span> <span class="keyword">Particle</span>(balloon.<span class="keyword">x</span>, balloon.<span class="keyword">y</span>, balloon.<span class="keyword">color</span>));
+}
+
+// --- 🌟 Particle Class：粒子的屬性與行為 🌟 ---
+<span class="keyword">class</span> <span class="keyword">Particle</span> {
+    <span class="keyword">constructor</span>(x, y, color) {
+        <span class="keyword">this</span>.pos = <span class="keyword">createVector</span>(x, y);
+        <span class="keyword">this</span>.vel = p5.<span class="keyword">Vector</span>.<span class="keyword">random2D</span>(); 
+        <span class="keyword">this</span>.vel.<span class="keyword">mult</span>(<span class="keyword">random</span>(2, 6)); <span class="comment">// 初始爆發力</span>
+        <span class="keyword">this</span>.color = color;
+        <span class="keyword">this</span>.lifespan = 255; <span class="comment">// 決定透明度的生命值</span>
+    }
+
+    <span class="keyword">update</span>() {
+        <span class="keyword">this</span>.vel.<span class="keyword">mult</span>(0.98); <span class="comment">// 模擬空氣阻力，速度遞減</span>
+        <span class="keyword">this</span>.pos.<span class="keyword">add</span>(<span class="keyword">this</span>.vel);
+        <span class="keyword">this</span>.lifespan -= 5; <span class="comment">// 透明度衰減</span>
+    }
+
+    <span class="keyword">display</span>() {
+        <span class="keyword">noStroke</span>();
+        <span class="comment">// 顏色隨著 lifespan 變淡</span>
+        <span class="keyword">fill</span>(<span class="keyword">this</span>.color[0], <span class="keyword">this</span>.color[1], <span class="keyword">this</span>.color[2], <span class="keyword">this</span>.lifespan);
+        <span class="keyword">ellipse</span>(<span class="keyword">this</span>.pos.x, <span class="keyword">this</span>.pos.y, 8, 8);
+    }
+    
+    <span class="keyword">isFinished</span>() {
+        <span class="keyword">return</span> <span class="keyword">this</span>.lifespan < 0;
+    }
+}
+            </div>
+            
+            <p>詳細版的可看HackMD筆記內的程式碼，謝謝。</p>
+            <p style="text-align: right; font-size: 0.9em; color: #7f8c8d; margin-top: 40px;">
+                — 筆記結束 —
+            </p>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
